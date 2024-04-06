@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PopUp</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body{
+            background-image: url('30e5ec8f1ec47882de36ee53e26fada9.jpg');
+        }
+        
+        h2,h3,#extra{
+            text-align: center;
+            color:  rgb(237,183,176);
+            text-shadow:  0px 0px 14px rgb(237,183,176);
+        }
+        
+        h4{
+            color:  rgb(237,183,176);
+            text-shadow:  0px 0px 14px rgb(237,183,176);
+            margin: auto;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .main-box{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s ease;
+            top: 0;
+        }
+
+        .content{
+            background-color: rgba(0, 0, 0, 0.385);
+            width: 30%;
+            height: fit-content;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        #codesniper{
+            position: fixed;
+            top: 10px;
+            left: 20px;
+        }
+
+        @media (max-width: 800px) {
+            #codesniper{ 
+                opacity: 0;
+            }
+        }
+
+        .content{
+            width: 50%;   
+        }
+    </style>
+</head>
+<body>
+    <h2 id="codesniper">#CodeSniper</h2>
+    <h2 style="margin-top: 10px;">Simple Pop Up Functionality</h2>
+    <span style="font-size: large;padding: 10px;margin-top:10px;display: none;" id="extra">Refresh The Page Again to See the popup Functionality</span>
+    <div class="main-box" style="display: none;">
+        <div class="content">
+            <h3>Code in comment below</h3>
+            <h4>[Click outside the box to close.] <br> [You can put your content in this box]</h4>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                const popBox = document.querySelector(".main-box");
+                popBox.style.display = 'flex';
+            }, 3000);
+        };
+        
+        const popBox = document.querySelector(".main-box");
+        const content = document.querySelector(".content");
+        const extra = document.getElementById('extra');
+        document.addEventListener('click', ()=> {
+            if (!content.contains(event.target)) {
+                    popBox.style.display = 'none';
+                    extra.style.display='inline';
+            }
+        });
+
+    </script>
+</body>
+</html>
